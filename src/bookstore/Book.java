@@ -12,62 +12,34 @@ public class Book
     String author;
     int nrOfPages;
     double price;
+    double weight;
+    int index;
     
-    public Book (String title, String author, int nrOfPages, double price)
+    public Book (int index, String title, String author, int nrOfPages, double price, double weight)
     {
         this.title = title;
         this.author = author;
         this.nrOfPages = nrOfPages;
         this.price = price;
-    }
-    
-    //Setters
-    public void setTitle(String title)
-    {
-        this.title = title;
-    }
-
-    public void setAuthor(String author)
-    {
-        this.author = author;
-    }
-
-    public void setNrOfPages(int nrOfPages)
-    {
-        this.nrOfPages = nrOfPages;
-    }
-
-    public void setPrice(double price)
-    {
-        this.price = price;
+        this.weight = weight;
+        this.index = index;
     }
     
     //Getters
-    public String getTitle()
-    {
-        return title;
-    }
-
-    public String getAuthor()
-    {
-        return author;
-    }
-
-    public int getNrOfPages()
-    {
-        return nrOfPages;
-    }
-
     public double getPrice()
     {
         return price;
     }
-    
+
+    public double getWeight()
+    {
+        return weight;
+    }
+  
     @Override
     public String toString()
     {
-        return "(" + title + ", " + author + ", "
-                + price + ", " + nrOfPages + ")";
+        return index + " (" + title + ", Author: " + author + 
+                ", Number of pages: " + nrOfPages + ", Price: " + price + ")";
     }
-    
 }

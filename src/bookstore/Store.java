@@ -1,0 +1,117 @@
+package bookstore;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author Hannes
+ */
+public class Store
+{
+
+    private List<Book> inventory;
+    Order order = new Order();
+
+    public Store()
+    {
+        inventory = new ArrayList<>();
+    }
+
+    public void run()
+    {
+        bookToStore();
+        bookChoice();
+        order.listBooks();
+
+    }
+
+    //Adds books to the inventory
+    public void bookToStore()
+    {
+        inventory.add(new Book(1, "Harry Potter and the Philosopher's Stone", "J.K. Rowling", 223, 10.99, 0.4));
+        inventory.add(new Book(2, "Harry Potter and the Chamber of Secrets", "J.K. Rowling", 251, 20.99, 0.45));
+        inventory.add(new Book(3, "Harry Potter and the Prisoner of Azkaban", "J.K. Rowling", 317, 30.99, 0.55));
+        inventory.add(new Book(4, "Harry Potter and the Goblet of Fire", "J.K. Rowling", 636, 40.99, 0.7));
+    }
+
+    //Reads inputs and catches non-int inputs
+    public int readInput(int maxNumber)
+    {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+
+        String input = null;
+        int choice;
+        try
+        {
+            input = bufferedReader.readLine();
+            choice = Integer.parseInt(input);
+            if (choice < maxNumber)
+            {
+                return choice;
+            }
+            else
+            {
+                System.out.println("Number is not within range\n");
+                return -1;
+            }
+        }
+        catch (NumberFormatException ex)
+        {
+            System.out.println("Invalid input!\n");
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
+    public void listBooks()
+    {
+        for (Book book : inventory)
+        {
+            System.out.println(book.toString());
+        }
+    }
+
+    //Method for handling the user choices for choosing books
+    public void bookChoice()
+    {
+        int choice = -1;
+
+        while (choice != 0)
+        {
+            listBooks();
+            System.out.println("\nPlease choose a book or press 0 to exit");
+            choice = readInput(5);
+
+            switch (choice)
+            {
+                case 1:
+                {
+                    order.addBook(inventory.get(0));
+                    break;
+                }
+                case 2:
+                {
+                    order.addBook(inventory.get(1));
+                    break;
+                }
+                case 3:
+                {
+                    order.addBook(inventory.get(2));
+                    break;
+                }
+                case 4:
+                {
+                    order.addBook(inventory.get(3));
+                    break;
+                }
+            }
+        }
+    }
+}
