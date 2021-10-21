@@ -27,8 +27,7 @@ public class Store
     {
         bookToStore();
         mainMenu();
-        order.listBooks();
-
+        //order.totalPrice();
     }
 
     //Adds books to the inventory

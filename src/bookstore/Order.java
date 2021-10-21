@@ -17,7 +17,7 @@ public class Order
     {
         bookList = new ArrayList<>();
     }
-    
+
     //Adds books to the bookList
     void addBook(Book book)
     {
@@ -32,13 +32,33 @@ public class Order
             System.out.println(book.toString());
         }
     }
+
+    //Calculates the price of the books
+    public void totalPrice()
+    {
+        double total = 0;
+        for (Book book : bookList)
+        {
+            total = total + book.getPrice();
+        }
+    }
     
+    //Calculates the price of the books
+    public void totalWeight()
+    {
+        double total = 0;
+        for (Book book : bookList)
+        {
+            total = total + book.getWeight();
+        }
+    }
+
     //Calculates how many boxes that are needed for the shipping
     private int boxesNeeded()
     {
         return (int) Math.ceil(bookList.size() / (double) 5);
     }
-    
+
     // Calculates how much the shipping will cost
     //1-5 boxes costs 150 SEK per box
     //6-50 boxes costs 90 SEK per box
@@ -46,7 +66,7 @@ public class Order
     private int deliveryFee()
     {
         int boxes = boxesNeeded();
-        
+
         return boxes > 5 ? (150 * 5) + ((boxes - 5) * 90) : boxes * 150;
     }
 }
