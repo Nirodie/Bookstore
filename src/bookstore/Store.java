@@ -10,6 +10,7 @@ import java.util.List;
  *
  * @author Hannes
  */
+//Handles the user interface along with user inputs
 public class Store
 {
 
@@ -20,7 +21,8 @@ public class Store
     {
         inventory = new ArrayList<>();
     }
-
+    
+    //Runs the program
     public void run()
     {
         bookToStore();
@@ -38,7 +40,8 @@ public class Store
         inventory.add(new Book(4, "Harry Potter and the Goblet of Fire", "J.K. Rowling", 636, 40.99, 0.7));
     }
 
-    //Reads inputs and catches non-int inputs
+    //Reads inputs and catches non-int inputs and has a maximum int input
+    //to prevent choosing a number that isn't in the list
     public int readInput(int maxNumber)
     {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -69,7 +72,8 @@ public class Store
         }
         return -1;
     }
-
+    
+    //Displays all the books from inventory
     public void listBooks()
     {
         for (Book book : inventory)
