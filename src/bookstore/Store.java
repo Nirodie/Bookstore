@@ -27,7 +27,6 @@ public class Store
     {
         bookToStore();
         mainMenu();
-        //order.totalPrice();
     }
 
     //Adds books to the inventory
@@ -72,12 +71,13 @@ public class Store
         return -1;
     }
     
-    //Displays all the books from inventory
+    //Displays all the books from inventory with index number starting from 1
     public void listBooks()
     {
+        int index = 1;
         for (Book book : inventory)
         {
-            System.out.println(book.toString());
+            System.out.println((index++) + " " + book.toString());
         }
     }
     
@@ -104,7 +104,12 @@ public class Store
                 case 2:
                 {
                     order.listBooks();
+                    order.displayWeightAndPrice();
                     break;
+                }
+                default: 
+                {
+                    System.out.println("You paid " + order.totalPrice() + " for your order");
                 }
             }
         }

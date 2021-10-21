@@ -34,23 +34,33 @@ public class Order
     }
 
     //Calculates the price of the books
-    public void totalPrice()
+    public double bookPrice()
     {
         double total = 0;
         for (Book book : bookList)
         {
             total = total + book.getPrice();
         }
+        return Math.round(total);
     }
     
     //Calculates the price of the books
-    public void totalWeight()
+    public double totalWeight()
     {
         double total = 0;
         for (Book book : bookList)
         {
             total = total + book.getWeight();
         }
+        return Math.round(total);
+    }
+    
+    public void displayWeightAndPrice()
+    {
+        System.out.println("The price of the books is : " + bookPrice() + "kr");
+        System.out.println("The total weight of your order is: " + totalWeight() + "kg");
+        System.out.println("The price of the shipping is: " + deliveryFee() + "kr");
+        System.out.println("The total price is: " + totalPrice() + "kr");
     }
 
     //Calculates how many boxes that are needed for the shipping
@@ -63,10 +73,20 @@ public class Order
     //1-5 boxes costs 150 SEK per box
     //6-50 boxes costs 90 SEK per box
     //Each box contains a maximum of 5 books
-    private int deliveryFee()
+    private double deliveryFee()
     {
-        int boxes = boxesNeeded();
+        double boxes = boxesNeeded();
 
         return boxes > 5 ? (150 * 5) + ((boxes - 5) * 90) : boxes * 150;
     }
+    
+    public double totalPrice()
+    {
+        double total;
+        
+        total = deliveryFee() + bookPrice();
+        
+        return Math.round(total);
+    }
+    
 }
