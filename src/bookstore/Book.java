@@ -39,7 +39,7 @@ public class Book
     @Override
     public String toString()
     {
-        return index + " (" + title + ", Author: " + author + 
+        return "(" + title + ", Author: " + author + 
                 ", Number of pages: " + nrOfPages + ", Price: " + price + ")";
     }
 }

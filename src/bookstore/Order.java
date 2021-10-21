@@ -7,7 +7,7 @@ import java.util.List;
  *
  * @author Hannes
  */
-//Handles the order
+//Handles the order and the fees
 public class Order
 {
 
@@ -40,6 +40,9 @@ public class Order
     }
     
     // Calculates how much the shipping will cost
+    //1-5 boxes costs 150 SEK per box
+    //6-50 boxes costs 90 SEK per box
+    //Each box contains a maximum of 5 books
     private int deliveryFee()
     {
         int boxes = boxesNeeded();

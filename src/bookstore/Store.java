@@ -26,7 +26,7 @@ public class Store
     public void run()
     {
         bookToStore();
-        bookChoice();
+        mainMenu();
         order.listBooks();
 
     }
@@ -81,17 +81,45 @@ public class Store
             System.out.println(book.toString());
         }
     }
-
+    
+    public void mainMenu()
+    {
+        int choice =-1;
+        
+        while (choice !=0)//0 to exit the loop
+        {
+            System.out.println("1) Choose books");
+            System.out.println("2) View your order");
+            System.out.println("0) Finalise your order\n");
+            System.out.println("Your choice: ");
+            
+            choice = readInput(4); //Accepts 0-3 as valid inputs
+            
+            switch(choice)
+            {
+                case 1:
+                {
+                    bookChoice();
+                    break;
+                }
+                case 2:
+                {
+                    order.listBooks();
+                    break;
+                }
+            }
+        }
+    }
     //Method for handling the user choices for choosing books
     public void bookChoice()
     {
         int choice = -1;
 
-        while (choice != 0)
+        while (choice != 0)//0 to exit the loop
         {
             listBooks();
-            System.out.println("\nPlease choose a book or press 0 to exit");
-            choice = readInput(5);
+            System.out.println("\nPlease choose a book or press 0 when you're finished");
+            choice = readInput(5); //Accepts 0-5 as valid inputs 
 
             switch (choice)
             {
