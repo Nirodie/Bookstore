@@ -12,9 +12,13 @@ public class Order
 {
 
     private List<Book> bookList;
+    int orderNbr;
 
-    public Order()
+    public Order(int orderNbr)
     {
+        //Generates a random number when the constructor is called and stores it in orderNbr
+        //So it can be used as the order number
+        this.orderNbr = (int)(Math.random() * 7000 + 4000);
         bookList = new ArrayList<>();
     }
 
@@ -55,12 +59,13 @@ public class Order
         return Math.round(total);
     }
     
-    public void displayWeightAndPrice()
+    public void displayOutput()
     {
+        System.out.println("\nYour order number is: " + orderNbr);
         System.out.println("The price of the books is : " + bookPrice() + "kr");
         System.out.println("The total weight of your order is: " + totalWeight() + "kg");
         System.out.println("The price of the shipping is: " + deliveryFee() + "kr");
-        System.out.println("The total price is: " + totalPrice() + "kr");
+        System.out.println("The total price is: " + totalPrice() + "kr\n");
     }
 
     //Calculates how many boxes that are needed for the shipping
@@ -80,6 +85,7 @@ public class Order
         return boxes > 5 ? (150 * 5) + ((boxes - 5) * 90) : boxes * 150;
     }
     
+    //Gives the total price for books + delivery
     public double totalPrice()
     {
         double total;

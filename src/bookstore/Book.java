@@ -13,16 +13,14 @@ public class Book
     int nrOfPages;
     double price;
     double weight;
-    int index;
     
-    public Book (int index, String title, String author, int nrOfPages, double price, double weight)
+    public Book (String title, String author, int nrOfPages, double price, double weight)
     {
         this.title = title;
         this.author = author;
         this.nrOfPages = nrOfPages;
         this.price = price;
         this.weight = weight;
-        this.index = index;
     }
     
     //Getters

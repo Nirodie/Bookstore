@@ -15,13 +15,13 @@ public class Store
 {
 
     private List<Book> inventory;
-    Order order = new Order();
+    Order order = new Order(0);
 
     public Store()
     {
         inventory = new ArrayList<>();
     }
-    
+
     //Runs the program
     public void run()
     {
@@ -32,10 +32,10 @@ public class Store
     //Adds books to the inventory
     public void bookToStore()
     {
-        inventory.add(new Book(1, "Harry Potter and the Philosopher's Stone", "J.K. Rowling", 223, 10.99, 0.4));
-        inventory.add(new Book(2, "Harry Potter and the Chamber of Secrets", "J.K. Rowling", 251, 20.99, 0.45));
-        inventory.add(new Book(3, "Harry Potter and the Prisoner of Azkaban", "J.K. Rowling", 317, 30.99, 0.55));
-        inventory.add(new Book(4, "Harry Potter and the Goblet of Fire", "J.K. Rowling", 636, 40.99, 0.7));
+        inventory.add(new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", 223, 10.99, 0.4));
+        inventory.add(new Book("Harry Potter and the Chamber of Secrets", "J.K. Rowling", 251, 20.99, 0.45));
+        inventory.add(new Book("Harry Potter and the Prisoner of Azkaban", "J.K. Rowling", 317, 30.99, 0.55));
+        inventory.add(new Book("Harry Potter and the Goblet of Fire", "J.K. Rowling", 636, 40.99, 0.7));
     }
 
     //Reads inputs and catches non-int inputs and has a maximum int input
@@ -70,7 +70,7 @@ public class Store
         }
         return -1;
     }
-    
+
     //Displays all the books from inventory with index number starting from 1
     public void listBooks()
     {
@@ -80,21 +80,22 @@ public class Store
             System.out.println((index++) + " " + book.toString());
         }
     }
-    
+
     public void mainMenu()
     {
-        int choice =-1;
-        
-        while (choice !=0)//0 to exit the loop
+        int choice = -1;
+
+        while (choice != 0)//0 to exit the loop
         {
             System.out.println("1) Choose books");
             System.out.println("2) View your order");
-            System.out.println("0) Finalise your order\n");
+            System.out.println("3) Finalise your order");
+            System.out.println("0) Exit\n");
             System.out.println("Your choice: ");
-            
+
             choice = readInput(4); //Accepts 0-3 as valid inputs
-            
-            switch(choice)
+
+            switch (choice)
             {
                 case 1:
                 {
@@ -104,16 +105,59 @@ public class Store
                 case 2:
                 {
                     order.listBooks();
-                    order.displayWeightAndPrice();
+                    order.displayOutput();
                     break;
                 }
-                default: 
+                case 3:
                 {
-                    System.out.println("You paid " + order.totalPrice() + " for your order");
+                    finaliseOrder();
                 }
             }
         }
     }
+
+    private void finaliseOrder()
+    {
+        int choice = -1;
+
+        while (choice != 0)//0 to back out
+        {
+            System.out.println("1) Collect order");
+            System.out.println("2) Deliver order");
+            System.out.println("0) Go back");
+
+            choice = readInput(3);//Accepts 0-2 as valid inputs
+            switch (choice)
+            {
+                case 1:
+                {
+                    System.out.println("You have chosen to collet your order,"
+                            + " the price is: " + order.bookPrice() + " thank you for your purchase.");
+                    System.exit(0);
+                    break;
+                }
+                case 2:
+                {
+                    System.out.println("You have chosen to have your order delivered,"
+                            + " the price is: " + order.totalPrice()+"\n");
+                    System.out.println("1) Confirm");
+                    System.out.println("0) Go back");
+                    
+                    choice = readInput(2);
+                    switch(choice)
+                    {
+                        case 1:
+                        {
+                            System.out.println("Thank you for your purchase!");
+                            System.exit(0);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     //Method for handling the user choices for choosing books
     public void bookChoice()
     {
