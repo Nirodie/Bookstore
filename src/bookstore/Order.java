@@ -10,8 +10,8 @@ import java.util.List;
 //Handles the order and the fees
 public class Order
 {
-
-    private List<Book> bookList;
+    
+    private List<Book> bookList; //An arraylist containing the books chosen by user
     int orderNbr;
 
     public Order(int orderNbr)
@@ -59,6 +59,7 @@ public class Order
         return Math.round(total);
     }
     
+    //Displays the calculations to the user
     public void displayOutput()
     {
         System.out.println("\nYour order number is: " + orderNbr);

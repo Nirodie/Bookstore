@@ -14,7 +14,7 @@ import java.util.List;
 public class Store
 {
 
-    private List<Book> inventory;
+    private List<Book> inventory; //An array list containing what books are available
     Order order = new Order(0);
 
     public Store()
@@ -80,7 +80,8 @@ public class Store
             System.out.println((index++) + " " + book.toString());
         }
     }
-
+    
+    //Displays the main menu
     public void mainMenu()
     {
         int choice = -1;
@@ -115,7 +116,8 @@ public class Store
             }
         }
     }
-
+    
+    //Displays the 3rd choice in the main menu, the end of the order
     private void finaliseOrder()
     {
         int choice = -1;
