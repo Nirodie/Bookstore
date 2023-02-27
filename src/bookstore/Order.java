@@ -3,10 +3,6 @@ package bookstore;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Hannes
- */
 //Handles the order and the fees
 public class Order
 {
