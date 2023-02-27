@@ -6,10 +6,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Hannes
- */
 //Handles the user interface along with user inputs
 public class Store
 {
