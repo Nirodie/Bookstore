@@ -1,9 +1,5 @@
 package bookstore;
 
-/**
- *
- * @author Hannes
- */
 
 //Creating and storing books
 public class Book
